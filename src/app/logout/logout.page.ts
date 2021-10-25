@@ -19,13 +19,8 @@ export class LogoutPage implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout().subscribe(
-      (response:any) => {
-        if(response.success == 'true')  {
-          this.router.navigate(['/login']);
-        }
-      }
-    );
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }
