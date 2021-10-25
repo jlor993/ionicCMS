@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   {
@@ -21,23 +22,28 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'user/:userId',
-    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'user-edit/:userId',
-    loadChildren: () => import('./user-edit/user-edit.module').then( m => m.UserEditPageModule)
+    loadChildren: () => import('./user-edit/user-edit.module').then( m => m.UserEditPageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'user-delete/:userId',
-    loadChildren: () => import('./user-delete/user-delete.module').then( m => m.UserDeletePageModule)
+    loadChildren: () => import('./user-delete/user-delete.module').then( m => m.UserDeletePageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'user-create',
-    loadChildren: () => import('./user-create/user-create.module').then( m => m.UserCreatePageModule)
+    loadChildren: () => import('./user-create/user-create.module').then( m => m.UserCreatePageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'articles',
@@ -49,15 +55,18 @@ const routes: Routes = [
   },
   {
     path: 'article-edit/:articleId',
-    loadChildren: () => import('./article-edit/article-edit.module').then( m => m.ArticleEditPageModule)
+    loadChildren: () => import('./article-edit/article-edit.module').then( m => m.ArticleEditPageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'article-delete/:articleId',
-    loadChildren: () => import('./article-delete/article-delete.module').then( m => m.ArticleDeletePageModule)
+    loadChildren: () => import('./article-delete/article-delete.module').then( m => m.ArticleDeletePageModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'article-create',
-    loadChildren: () => import('./article-create/article-create.module').then( m => m.ArticleCreatePageModule)
+    loadChildren: () => import('./article-create/article-create.module').then( m => m.ArticleCreatePageModule),
+    canActivate:[AuthGuardService]
   }
 ];
 
